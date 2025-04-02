@@ -1,0 +1,78 @@
+curl http://localhost:8080/alunni
+Richiesta:
+GET    /alunni                 AlunniController:indexAlunno
+Risposta
+Status code: 200   
+[{"id": 1, "nome":"Claudio", "cognome":"Benvenuti"},  {"id": 2 , "nome":"Francesco", "cognome":"Bertoli"}]
+
+--------------------------
+curl http://locahost:8080/alunni/1
+Richiesta:
+GET    /alunni/1              AlunniController:viewAlunno
+Risposta
+Status code: 200   
+[{"id":1,"nome":"claudio","cognome":"benve"}]
+
+--------------------------
+curl -X POST http://locahost:8080/alunni -H "Content-Type: application/json" -d '{"nome": "Ivan", "cognome": "Bruno"}
+Richiesta:
+POST    /alunni               AlunniController:createAlunno
+Risposta
+Status code: 201   
+{"msg": "created"}
+
+--------------------------
+curl -X PUT http://locahost:8080/alunni/1 -H "Content-Type: application/json" -d '{"nome": "Iva", "cognome": "Brun"}
+Richiesta:
+PUT    /alunni/1              AlunniController:updateAlunno
+Risposta
+Status code: 200  
+{"msg": "updated"}
+
+--------------------------
+curl -X DELETE http://locahost:8080/alunni/1
+Richiesta:
+DELETE    /alunni/1              AlunniController:deleteAlunno
+Risposta
+Status code: 200  
+{"msg": "deleted"}
+
+--------------------------
+curl http://locahost:8080/certificazioni
+Richiesta:
+GET    /certificazioni              AlunniController:indexCertificazione
+Risposta
+Status code: 200  
+[{"id":"1","alunno_id":"1","titolo":"Certificazione Python","votazione":"85","ente":"Coursera"},{"id":"2","alunno_id":"1","titolo":"Certificazione SQL","votazione":"90","ente":"Udemy"}]
+
+--------------------------
+curl http://locahost:8080/certificazioni/1
+Richiesta:
+GET    /certificazioni/1              AlunniController:viewCertificazione
+Risposta
+Status code: 200  
+[{"id":"1","alunno_id":"1","titolo":"Certificazione Python","votazione":"85","ente":"Coursera"}]
+
+--------------------------
+curl -X POST http://locahost:8080/certificazioni -H "Content-Type: application/json" -d '{"alunno_id" : 1,"titolo":"cpp","votazione":90,"ente":"questi"}'
+Richiesta:
+POST    /certificazione              AlunniController:createCertificazione
+Risposta
+Status code: 201   
+{"msg": "created"}
+
+--------------------------
+curl -X PUT http://locahost:8080/certificazioni/1 -H "Content-Type: application/json" -d '{"alunno_id" : 1,"titolo":"c#","votazione":70,"ente":"questo"}'
+Richiesta:
+PUT    /certificazione/1              AlunniController:updateCertificazione
+Risposta
+Status code: 201   
+{"msg": "updated"}
+
+--------------------------
+curl -X DELETE http://locahost:8080/certificazioni/1
+Richiesta:
+DELETE    /certificazioni/1             AlunniController:deleteCertificazione
+Risposta
+Status code: 200  
+{"msg": "deleted"}
