@@ -4,6 +4,7 @@ import AlunniRow from './AlunniRow';
 function App() {
   const [alunni, setAlunni] = useState([]);
   const [loading, setLoading] = useState(false);
+
   async function caricaAlunni(){
     setLoading(true);
     const response = await fetch("http://localhost:8080/alunni",{method:"GET"});
@@ -25,9 +26,9 @@ function App() {
               <AlunniRow a={alunno} caricaAlunni={caricaAlunni}/>
             )}
           </table>
-        )} 
-        </>
-      }     
+        )}     
+    </>
+    }
     </div>
   );
 }
