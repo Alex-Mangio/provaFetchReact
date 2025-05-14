@@ -5,6 +5,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 class AlunniController
 {
   public function indexAlunno(Request $request, Response $response, $args){
+    sleep(2);
     $mysqli_connection = new MySQLi('my_mariadb', 'root', 'ciccio', 'scuola');
     $queryParams = $request->getQueryParams();
     $search = "WHERE nome regexp '$queryParams[search]' OR cognome regexp '$queryParams[search]'" ?? "";
@@ -98,7 +99,7 @@ class AlunniController
     $result2 = $stmt2->get_result();
     $results = $result2->fetch_all(MYSQLI_ASSOC);
 
-    if($result2 && $mysqli_connection->affected_rows == 0){
+    if($result2 && $mysqli_connection->affected_rows != 0){
       $response->getBody()->write(json_encode(array("message" => "Not Found")));
       return $response->withHeader("Content-type", "application/json")->withStatus(404);
     } else {
